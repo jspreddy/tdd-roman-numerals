@@ -179,5 +179,26 @@ describe('index.js', () => {
         expect(evaluateRoman('MDCLXVI')).toEqual(1666);
       });
     });
+
+    describe('Ascending numerals => Subtract prior from the latter', () => {
+      it('should evaluate IV to 4 | (I)V => 5-1 = 4', async () => {
+        expect(evaluateRoman('IV')).toEqual(4);
+      });
+      it('should evaluate IVX to 6 | (IV)X => (10-(5-1)) = 6', async () => {
+        expect(evaluateRoman('IVX')).toEqual(6);
+      });
+      it('should evaluate IVXL to 44 | ((IV)X)L => (50-(10-(5-1))) = 44', async () => {
+        expect(evaluateRoman('IVXL')).toEqual(44);
+      });
+      it('should evaluate IVXLC to 56 | (((IV)X)L)C => (100-(50-(10-(5-1)))) = 56', async () => {
+        expect(evaluateRoman('IVXLC')).toEqual(56);
+      });
+      it('should evaluate IVXLCD to 444 | ((((IV)X)L)C)D => (500-(100-(50-(10-(5-1))))) = 444', async () => {
+        expect(evaluateRoman('IVXLCD')).toEqual(444);
+      });
+      it('should evaluate IVXLCDM to 556 | (((((IV)X)L)C)D)M => (1000-(500-(100-(50-(10-(5-1)))))) = 556', async () => {
+        expect(evaluateRoman('IVXLCDM')).toEqual(556);
+      });
+    });
   });
 });
