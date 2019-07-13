@@ -158,5 +158,26 @@ describe('index.js', () => {
         testRepetitionsOfNumeralByAddition('M', 1000);
       });
     });
+
+    describe('Descending Numerals => Addition', () => {
+      it('should evaluate VI to 6', async () => {
+        expect(evaluateRoman('VI')).toEqual(6);
+      });
+      it('should evaluate XVI to 16', async () => {
+        expect(evaluateRoman('XVI')).toEqual(16);
+      });
+      it('should evaluate LXVI to 66', async () => {
+        expect(evaluateRoman('LXVI')).toEqual(66);
+      });
+      it('should evaluate CLXVI to 166', async () => {
+        expect(evaluateRoman('CLXVI')).toEqual(166);
+      });
+      it('should evaluate DCLXVI to 666', async () => {
+        expect(evaluateRoman('DCLXVI')).toEqual(666);
+      });
+      it('should evaluate MDCLXVI to 1666', async () => {
+        expect(evaluateRoman('MDCLXVI')).toEqual(1666);
+      });
+    });
   });
 });
