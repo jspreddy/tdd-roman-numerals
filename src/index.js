@@ -23,10 +23,41 @@ export function extractRoman(str) {
   return _.toUpper(stripNonRoman(str));
 }
 
-export function evaluateRoman(str) {
+export function evaluateRoman(str, debug = false) {
   if (!str) return 0;
 
   const arr = str.split('');
   const numbers = _.map(arr, item => romanCharToInt(item));
-  return _.reduce(numbers, (sum, item) => sum + item);
+
+
+  const splitParts = _.reduce(
+    numbers,
+    (acc, currentItem) => {
+      if (acc.length === 0) {
+        acc.push([currentItem]);
+      } else if (_.last(_.last(acc)) < currentItem) {
+        _.last(acc).push(currentItem);
+      } else {
+        acc.push([currentItem]);
+      }
+      return acc;
+    },
+    [],
+  );
+
+  const negativesComputed = _.map(splitParts, (part) => {
+    let i = 0;
+    let value = 0;
+    while (i < part.length) {
+      value = part[i] - value;
+      i += 1;
+    }
+    return value;
+  });
+
+  const evaluatedValue = _.reduce(negativesComputed, (sum, item) => sum + item);
+
+  if (debug) console.log({ splitParts, evaluatedValue });
+
+  return evaluatedValue;
 }

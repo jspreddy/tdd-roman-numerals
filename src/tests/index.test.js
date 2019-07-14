@@ -200,5 +200,12 @@ describe('index.js', () => {
         expect(evaluateRoman('IVXLCDM')).toEqual(556);
       });
     });
+
+    describe('Full sequences to be evaluated', () => {
+      it('should evaluate XXXIX to 39', async () => {
+        expect(evaluateRoman('XXXIX', true)).toEqual(39);
+        expect(evaluateRoman('XXXIXX', true)).toEqual(49);
+      });
+    });
   });
 });
