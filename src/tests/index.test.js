@@ -204,7 +204,12 @@ describe('index.js', () => {
     describe('Full sequences to be evaluated', () => {
       it('should evaluate XXXIX to 39', async () => {
         expect(evaluateRoman('XXXIX', true)).toEqual(39);
+      });
+      it('should evaluate XXXIXX to 49', async () => {
         expect(evaluateRoman('XXXIXX', true)).toEqual(49);
+      });
+      it('should evaluate MLXVI to 1066', async () => {
+        expect(evaluateRoman('MLXVI', true)).toEqual(1066);
       });
     });
   });
