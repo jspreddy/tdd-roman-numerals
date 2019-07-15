@@ -225,7 +225,7 @@ describe('index.js', () => {
 
       _.each(tests, (value, key) => {
         it(`should evaluate ${key} to ${value}`, async () => {
-          expect(evaluateRoman(key, true)).toEqual(value);
+          expect(evaluateRoman(key)).toEqual(value);
         });
       });
     });
