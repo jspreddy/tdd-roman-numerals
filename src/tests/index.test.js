@@ -202,14 +202,31 @@ describe('index.js', () => {
     });
 
     describe('Full sequences to be evaluated', () => {
-      it('should evaluate XXXIX to 39', async () => {
-        expect(evaluateRoman('XXXIX', true)).toEqual(39);
-      });
-      it('should evaluate XXXIXX to 49', async () => {
-        expect(evaluateRoman('XXXIXX', true)).toEqual(49);
-      });
-      it('should evaluate MLXVI to 1066', async () => {
-        expect(evaluateRoman('MLXVI', true)).toEqual(1066);
+      const tests = {
+        XXXIX: 39,
+        XXXIXX: 49,
+        CLX: 160,
+        CCVII: 207,
+        CCXLVI: 246,
+        IVXLCDM: 556,
+        DCCLXXXIX: 789,
+        MIX: 1009,
+        MLXVI: 1066,
+        MDCCLXXVI: 1776, // (the date written on the book held by the Statue of Liberty)
+        MCMLIV: 1954,
+        MMXIV: 2014,
+        MMXIX: 2019, // current year.
+        MMCDXXI: 2421,
+        MMDCDM: 3100,
+        MMDCM: 3400,
+        MMMMMMMMMI: 9001, // its over 9000!!!
+        MiMiMiMiMiMimiMiMiMi: 9992,
+      };
+
+      _.each(tests, (value, key) => {
+        it(`should evaluate ${key} to ${value}`, async () => {
+          expect(evaluateRoman(key, true)).toEqual(value);
+        });
       });
     });
   });

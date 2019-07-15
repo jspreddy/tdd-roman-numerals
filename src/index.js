@@ -57,7 +57,7 @@ export function evaluateRoman(str, debug = false) {
 
   const evaluatedValue = _.reduce(negativesComputed, (sum, item) => sum + item);
 
-  if (debug) console.log({ splitParts, evaluatedValue });
+  if (debug) console.log({ str, splitParts, evaluatedValue });
 
   return evaluatedValue;
 }
