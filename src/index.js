@@ -1,7 +1,5 @@
 import _ from 'lodash';
 
-export function test() { }
-
 export function romanCharToInt(char) {
   switch (_.toLower(char)) {
     case 'i': return 1;
