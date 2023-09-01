@@ -1,13 +1,15 @@
-module.exports = (api) => {
-  api.cache(true);
+export default (api) => {
+  api.cache.never();
 
   return {
     presets: [
-      ['@babel/preset-env', {
-        targets: {
-          node: 'v8.10.0',
-        },
-      }],
+      ['@babel/preset-env'],
     ],
+    targets: {
+      node: 16,
+      esmodules: true
+    },
+    sourceMaps: "inline",
+    retainLines: true,
   };
 };
